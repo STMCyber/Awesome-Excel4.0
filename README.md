@@ -386,9 +386,13 @@ Put it in R1C2
 ```
 ## Other resources
 [Old school: evil Excel 4.0 macros (XLM) by Stan Hegt](https://outflank.nl/blog/2018/10/06/old-school-evil-excel-4-0-macros-xlm/)
+
 [Evolution of Excel 4.0 Macro Weaponization by JAMES HAUGHOM AND STEFANO ORTOLANI](https://www.lastline.com/labsblog/evolution-of-excel-4-0-macro-weaponization/)
+
 [Excel4.0 Macros - Now with Twice The Bits! by Philip Tsukerman](https://www.cybereason.com/blog/excel4.0-macros-now-with-twice-the-bits)
+
 [Evolution of Excel 4.0 Macro Weaponization – Part 2 by Baibhav Singh](https://blogs.vmware.com/networkvirtualization/2020/10/evolution-of-excel-4-0-macro-weaponization-continued.html/)
+
 [XLM (Excel 4.0) Macro Generator for Phishing Campaigns by joeleonjr](https://fortynorthsecurity.com/blog/excelntdonut/)
 
 
