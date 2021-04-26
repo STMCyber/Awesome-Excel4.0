@@ -133,7 +133,7 @@ Excel 4.0 allows to define multiple variables and call multiple formulas in one 
 ### Spread formulas
 Another technique that makes your code difficult to analyze and obfuscates your code is to spread formulas across a sheet or across multiple sheets. When spreading formulas on the worksheet, be sure to follow the correct order of calls.
 
-## [↑](#-table-of-contents) Using WinAPI
+## [↑](#table-of-contents) Using WinAPI
 You can access WinAPI functions via REGISTER, REGISTER.ID and CALL formulas. REGISTER and REGISTER.ID function allows you to load an exported function of a DLL. CALL function allows you to call a procedure in a DLL or code resource.
 
 REGISTER and REGISTER.ID formula syntax:
