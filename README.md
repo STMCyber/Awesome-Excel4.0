@@ -5,6 +5,7 @@ This list is for anyone wishing to learn about Excel4.0/XLM for Red Team but do 
 Based on: [The first step in Excel 4.0 for Red Team](https://blog.stmcyber.com/excel-4-0-for-red-team/)
 ## Table of Contents
 1. [Hello calc.exe!](#-hello-calc.exe-!)
+2. [Using WinAPI](#-using-winapi)
 ## [↑](#-table-of-contents) Hello calc.exe !
 Let's start by creating a simple macro to run the calculator:
 1. Run Excel and create new workbook.
@@ -132,7 +133,7 @@ Excel 4.0 allows to define multiple variables and call multiple formulas in one 
 ### Spread formulas
 Another technique that makes your code difficult to analyze and obfuscates your code is to spread formulas across a sheet or across multiple sheets. When spreading formulas on the worksheet, be sure to follow the correct order of calls.
 
-## Using WinAPI
+## [↑](#-table-of-contents) Using WinAPI
 You can access WinAPI functions via REGISTER, REGISTER.ID and CALL formulas. REGISTER and REGISTER.ID function allows you to load an exported function of a DLL. CALL function allows you to call a procedure in a DLL or code resource.
 
 REGISTER and REGISTER.ID formula syntax:
