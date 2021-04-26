@@ -3,8 +3,9 @@ List of Awesome Excel4.0/XLM tricks and functions useful Red Team and Blue Team.
 This list is for anyone wishing to learn about Excel4.0/XLM for Red Team but do not have a starting point.
 
 Based on: [The first step in Excel 4.0 for Red Team](https://blog.stmcyber.com/excel-4-0-for-red-team/)
-
-## Hello calc.exe !
+## Table of Contents
+1. [Hello calc.exe!](#-hello-calc.exe-!)
+## [↑](#-table-of-contents) Hello calc.exe !
 Let's start by creating a simple macro to run the calculator:
 1. Run Excel and create new workbook.
 2. Right click "Sheet1" in the bottom of your screen and click "Insert".
