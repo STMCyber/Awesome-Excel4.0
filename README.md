@@ -1,4 +1,7 @@
-# Awesome-Excel4.0
+# Awesome-Excel4.0 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)]
+Follow us on [Twitter](https://twitter.com/STMCyber)!
+
+
 List of Awesome Excel4.0/XLM tricks and functions useful Red Team and Blue Team. 
 This list is for anyone wishing to learn about Excel4.0/XLM for Red Team but do not have a starting point.
 
@@ -400,4 +403,5 @@ Put it in R1C2
 [XLM (Excel 4.0) Macro Generator for Phishing Campaigns by joeleonjr](https://fortynorthsecurity.com/blog/excelntdonut/)
 
 
+Follow us on [Twitter](https://twitter.com/STMCyber)!
 
